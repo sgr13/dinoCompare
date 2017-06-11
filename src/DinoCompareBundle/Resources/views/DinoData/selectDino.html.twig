@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Porównywarka Dinozaurów{% endblock %}
+
+{% block body %}
+    <h1>Wybierz dinozaury:</h1>
+        <p>Wybierz dinozaura nr 1</p>
+        <form method="post" action="{{ path('compare')}}">
+            <select name="dinosaur">
+                {% for dino in dinos %}
+                    <option value="{{ dino.id }}">
+                        {{ dino.name }}
+                    </option>
+                {% endfor %}
+            </select>
+
+        <p>Wybierz dinozaura nr 2</p>
+
+            <select name="dinosaur1">
+                {% for dino in dinos %}
+                    <option value="{{ dino.id }}">
+                        {{ dino.name }}
+                    </option>
+                {% endfor %}
+            </select>
+            <p><input type="submit" value="Porównaj"></p>
+        </form>
+
+{% endblock %}

@@ -9,12 +9,14 @@
 </head>
 <body>
 <div id="topPanel">
-    <a href="http://localhost:8000/showAll">Wszystkie dinozaury</a> |<a href="http://localhost:8000/create">Dodaj dinozaura</a>
+    <a href="http://localhost:8000/showAll">Wszystkie dinozaury</a> |<a href="http://localhost:8000/create">Dodaj dinozaura</a> | <a href="http://localhost:8000/selectDino">Porównaj dinozaura</a>
 </div>
 <hr>
 <div class="mainContainer">
     {% block body %}{% endblock %}
     {% block javascripts %}{% endblock %}
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/style.js') }}"></script>
 </div>
 </body>
 </html>

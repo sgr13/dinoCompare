@@ -1,0 +1,56 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Porównywarka Dinozaurów{% endblock %}
+
+{% block body %}
+<h1>Porównywarka Dinozaurów</h1>
+    <table id="dinoTable">
+        <th>{{ dino.name }}</th><th>Kategoria:</th><th>{{ dino1.name }}</th>
+        <tr>
+            <td><img src="https://jokomisiada.pl/pol_pl_Dinozaur-duzy-gumowy-malowany-figurka-dino-ZA1058-10293_3.jpg" width="250" height="200"></td>
+            <td></td>
+            <td><img src="http://www.dinozaury.biz/dinozaury/Spinozaur.jpg" width="250" height="200"></td>
+        </tr>
+        <tr id="weight">
+            <td class="firstDinoRow">{{ dino.weight }} ton</td>
+            <td>Waga</td>
+            <td>{{ dino1.weight }} ton</td>
+        </tr>
+        <tr id="lenght">
+            <td class="firstDinoRow">{{ dino.lenght }} m.</td>
+            <td>Długość</td>
+            <td>{{ dino1.lenght }} m.</td>
+        </tr>
+        <tr id="height">
+            <td class="firstDinoRow">{{ dino.height }} m.</td>
+            <td>Wysokość</td>
+            <td>{{ dino1.height }} m.</td>
+        </tr>
+        <tr>
+            <td class="firstDinoRow">{{dino.discoverYear}} r.</td>
+            <td>Rok odkrycia</td>
+            <td>{{dino1.discoverYear}} r.</td>
+        </tr>
+        <tr>
+            <td class="firstDinoRow">{{dino.foodType.name}}</td>
+            <td>Typ</td>
+            <td>{{dino1.foodType.name}}</td>
+        </tr>
+        <tr>
+            <td class="firstDinoRow">{{dino.period.name}}</td>
+            <td>Okres</td>
+            <td>{{dino1.period.name}}</td>
+        </tr>
+        <tr>
+            <td class="firstDinoRow">{{dino.dinoOrder.name}}</td>
+            <td>Rząd</td>
+            <td>{{dino1.dinoOrder.name}}</td>
+        </tr>
+        <tr>
+            <td class="firstDinoRow">{{dino.dinoSuborder.name}}</td>
+            <td>Podrząd</td>
+            <td>{{dino1.dinoSuborder.name}}</td>
+        </tr>
+    </table>
+
+{% endblock %}

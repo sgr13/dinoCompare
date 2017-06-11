@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class DinoDataController extends Controller
 {
@@ -54,12 +55,10 @@ class DinoDataController extends Controller
     }
 
     /**
-     * @Route("/edit")
+     * @Route("/edit/{id}")
      */
-    public function editAction(Request $request)
+    public function editAction(Request $request, $id)
     {
-        $id = $request->get('id');
-
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
 
         $dino = $dinoRepository->find($id);
@@ -84,16 +83,13 @@ class DinoDataController extends Controller
     }
 
     /**
-     * @Route("/delete")
+     * @Route("/delete/{id}")
      */
-    public function deleteAction(Request $request)
+    public function deleteAction(Request $request, $id)
     {
-        $id = $request->get('id');
-
         $em = $this->getDoctrine()->getManager();
 
         $dino = $em->getRepository('DinoCompareBundle:DinoData')->find($id);
-
 
         if (!$dino) {
             throw new NotFoundHttpException('Nie znaleziono dinozaura o podanym ID');
@@ -116,6 +112,41 @@ class DinoDataController extends Controller
 
         return $this->render('DinoCompareBundle:DinoData:showAll.html.twig', array('dinos' => $dinos));
     }
+
+    /**
+     * @Route("/compareForm", name="compare")
+     * @Method("POST")
+     */
+    public function compareForm(Request $request)
+    {
+        $dinosaur = $request->get('dinosaur');
+
+        $dinosaur1 = $request->get('dinosaur1');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $dino = $em->getRepository('DinoCompareBundle:DinoData')->find($dinosaur);
+
+        $dino1 = $em->getRepository('DinoCompareBundle:DinoData')->find($dinosaur1);
+
+        return $this->render('DinoCompareBundle:DinoData:compareForm.html.twig', array(
+            'dino' => $dino, 'dino1' => $dino1
+        ));
+    }
+
+    /**
+     * @Route("/selectDino")
+     */
+    public function selectDino()
+    {
+        $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
+
+        $dinos = $dinoRepository->findAll();
+
+        return $this->render('DinoCompareBundle:DinoData:selectDino.html.twig', array('dinos' => $dinos));
+    }
+
+
 
 
 
