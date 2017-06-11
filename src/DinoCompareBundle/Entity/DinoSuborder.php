@@ -33,6 +33,13 @@ class DinoSuborder
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suborderPath", type="string", length=250)
+     */
+    private $suborderPath;
+
 
     /**
      * Get id
@@ -83,5 +90,25 @@ class DinoSuborder
         $this->dinoData = $dinoData;
     }
 
+    /**
+     * @return string
+     */
+    public function getSuborderPath()
+    {
+        return $this->suborderPath;
+    }
+
+    /**
+     * @param string $suborderPath
+     */
+    public function setSuborderPath($suborderPath)
+    {
+        $this->suborderPath = $suborderPath;
+    }
+
+    public function getWebPath()
+    {
+        return 'photo/'.$this->suborderPath;
+    }
 
 }

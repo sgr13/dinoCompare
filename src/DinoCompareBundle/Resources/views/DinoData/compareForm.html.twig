@@ -7,9 +7,10 @@
     <table id="dinoTable">
         <th>{{ dino.name }}</th><th>Kategoria:</th><th>{{ dino1.name }}</th>
         <tr>
-            <td><img src="https://jokomisiada.pl/pol_pl_Dinozaur-duzy-gumowy-malowany-figurka-dino-ZA1058-10293_3.jpg" width="250" height="200"></td>
+            <td><img src="{{ dino.webPath }}" width="250" height="200"></td>
             <td></td>
-            <td><img src="http://www.dinozaury.biz/dinozaury/Spinozaur.jpg" width="250" height="200"></td>
+
+            <td><img src="{{ dino1.webPath }}" width="250" height="200"></td>
         </tr>
         <tr id="weight">
             <td class="firstDinoRow">{{ dino.weight }} ton</td>

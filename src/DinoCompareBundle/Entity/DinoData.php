@@ -32,21 +32,6 @@ class DinoData
      */
     private $dinoSuborder;
 
-    /**
-     * @return mixed
-     */
-    public function getPeriod()
-    {
-        return $this->period;
-    }
-
-    /**
-     * @param mixed $period
-     */
-    public function setPeriod($period)
-    {
-        $this->period = $period;
-    }
 
     /**
      * @var int
@@ -95,7 +80,7 @@ class DinoData
     /**
      * @var string
      *
-     * @ORM\Column(name="path", type="string", length=50)
+     * @ORM\Column(name="path", type="string")
      */
     private $path;
 
@@ -147,6 +132,22 @@ class DinoData
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPeriod()
+    {
+        return $this->period;
+    }
+
+    /**
+     * @param mixed $period
+     */
+    public function setPeriod($period)
+    {
+        $this->period = $period;
     }
 
     /**
@@ -289,5 +290,9 @@ class DinoData
         $this->dinoSuborder = $dinoSuborder;
     }
 
+    public function getWebPath()
+    {
+        return 'photo/'.$this->path;
+    }
 
 }

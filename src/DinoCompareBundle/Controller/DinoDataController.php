@@ -7,6 +7,7 @@ use DinoCompareBundle\Form\DinoDataType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -20,8 +21,7 @@ class DinoDataController extends Controller
     public function newAction()
     {
 
-        return $this->render('DinoCompareBundle:DinoData:new.html.twig', array(
-            // ...
+        return $this->render('DinoCompareBundle:DinoData:new.html.twig', array(// ...
         ));
     }
 
@@ -39,6 +39,16 @@ class DinoDataController extends Controller
         if ($form->isSubmitted()) {
 
             $dino = $form->getData();
+            $file = $dino->getPath();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            $file->move(
+                $this->getParameter('path_directory'),
+                $fileName
+            );
+
+
+            $dino->setPath($fileName);
 
             $em = $this->getDoctrine()->getManager();
 
@@ -46,7 +56,7 @@ class DinoDataController extends Controller
 
             $em->flush();
 
-            Return new Response("Dodano nowego Dinozaura");
+            return new Response("Dodano nowego Dinozaura");
         }
 
         return $this->render('DinoCompareBundle:DinoData:create.html.twig', array(
@@ -71,7 +81,19 @@ class DinoDataController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
+
             $dino = $form->getData();
+
+            $file = $dino->getPath();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            $file->move(
+                $this->getParameter('path_directory'),
+                $fileName
+            );
+
+            $dino->setPath($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($dino);
             $em->flush();
@@ -119,6 +141,16 @@ class DinoDataController extends Controller
      */
     public function compareForm(Request $request)
     {
+        $session = $request->getSession();
+
+        if ($session->has('dino1')) {
+            $session->remove('dino1');
+        }
+
+        if ($session->has('dino2')) {
+            $session->remove('dino2');
+        }
+
         $dinosaur = $request->get('dinosaur');
 
         $dinosaur1 = $request->get('dinosaur1');
@@ -135,19 +167,85 @@ class DinoDataController extends Controller
     }
 
     /**
-     * @Route("/selectDino")
+     * @Route("/selectDino", name="selectDino")
      */
-    public function selectDino()
+    public function selectDino(Request $request)
     {
+        $session = $request->getSession();
+
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
 
         $dinos = $dinoRepository->findAll();
 
-        return $this->render('DinoCompareBundle:DinoData:selectDino.html.twig', array('dinos' => $dinos));
+        if ($session->has('dino1')) {
+            $session = $request->getSession();
+            $dino1 = $session->get('dino1');
+            $dinoSelected1 = $dinoRepository->find($dino1);
+        } else {
+            $dinoSelected1 = null;
+        }
+
+        if ($session->has('dino2')) {
+            $session = $request->getSession();
+            $dino2 = $session->get('dino2');
+            $dinoSelected2 = $dinoRepository->find($dino2);
+            $session->remove('dino2');
+        } else {
+            $dinoSelected2 = null;
+        }
+
+        return $this->render('DinoCompareBundle:DinoData:selectDino.html.twig', array('dinos' => $dinos, 'dino1' => $dinoSelected1, 'dino2' => $dinoSelected2));
     }
 
+    /**
+     * @Route("/graphicSelection/{id}", name="graphic")
+     */
+    public function graphicSelection($id)
+    {
 
+        $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
 
+        $dinos = $dinoRepository->findAll();
 
+        $suborderRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoSuborder');
 
+        $suborders = $suborderRepository->findAll();
+
+        return $this->render('DinoCompareBundle:DinoData:graphicSelection.html.twig', array('dinos' => $dinos, 'suborders' => $suborders, 'selection' => $id));
+    }
+
+    /**
+     * @Route("/selectSuborder/{id}/{selection}", name="selectSuborder")
+     */
+    public function selectSuborder(Request $request, $id, $selection)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $dinos = $em->getRepository('DinoCompareBundle:DinoData')->findByDinoSuborder($id);
+
+        if (!$dinos) {
+            throw new NotFoundHttpException('Nie znaleziono dinozaurów w bazie danych');
+        }
+
+        return $this->render('DinoCompareBundle:DinoData:selectSuborder.html.twig', array('dinos' => $dinos, 'selection' => $selection));
+    }
+
+    /**
+     * @Route("/idSaveToSession/{id}/{selection}", name="idSaveToSession")
+     */
+    public function idSaveToSession(Request $request, $id, $selection)
+    {
+
+        $session = $request->getSession();
+
+        if ($selection == 1) {
+            $session->set('dino1', $id);
+        }
+
+        if ($selection == 2) {
+            $session->set('dino2', $id);
+        }
+        return new RedirectResponse($this->generateUrl('selectDino'));
+    }
 }
