@@ -11,7 +11,7 @@
                 <tr>
             {% endif %}
             <td>
-                <a href="{{ path('selectSuborder', {'id': suborder.id, 'selection': selection}) }}"><img src="{{ root_path }}web/photo/theropods.jpeg" width="100" height="80"></a><br>
+                <a href="{{ path('selectSuborder', {'id': suborder.id, 'selection': selection}) }}"><img src="{{ root_path }}web/photo/"{{ suborder.getSuborderPath }} width="100" height="80"></a><br>
                 {{suborder.name}}
             </td>
             {% if i  == 2 or i == 5%}
