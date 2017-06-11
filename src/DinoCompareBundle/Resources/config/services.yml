@@ -1,0 +1,4 @@
+services:
+#    dino_compare.example:
+#        class: DinoCompareBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

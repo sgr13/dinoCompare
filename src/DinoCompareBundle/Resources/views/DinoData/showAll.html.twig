@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}DinoCompareBundle:DinoData:showAll{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the DinoData:showAll page</h1>
+    <table>Wszystkie dinozaury:
+        <tr>
+            <th>Nazwa</th><th>Waga</th><th>Długość</th><th>Wysokość</th><th>Rok odkrycia</th>
+            <th>Typ</th><th>Okres</th><th>Rząd</th><th>Podrząd</th><th>Edytuj</th><th>Usuń</th>
+        </tr>
+        {% for dino in dinos %}
+            <tr>
+                <td>{{dino.name}} </td><td>{{dino.weight}}</td><td>{{dino.lenght}}</td>
+                <td>{{dino.height}}</td><td>{{dino.discoverYear}}</td><td>{{dino.foodType.name}}</td>
+                <td>{{dino.period.name}}</td><td>{{dino.dinoOrder.name}}</td><td>{{dino.dinoSuborder.name}}</td>
+                <td><a href="http://localhost:8000/edit?id={{ dino.id }}">Edytuj</a></td>
+                <td><a href="http://localhost:8000/delete?id={{ dino.id }}">Usuń</a></td>
+            </li>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
