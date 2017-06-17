@@ -5,6 +5,7 @@
     <title>{% block title %}DinoCompare{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
 </head>
 <body>
@@ -12,8 +13,25 @@
     <a href="http://localhost:8000/showAll">Wszystkie dinozaury</a> |<a href="http://localhost:8000/create">Dodaj dinozaura</a> | <a href="http://localhost:8000/selectDino">Porównaj dinozaura</a>
 </div>
 <hr>
-<div class="mainContainer">
-    {% block body %}{% endblock %}
+<div class="mainContainer row">
+    {% block body %}
+
+    {% block progressBar %}
+        <div style="width: 100%; min-height: 10px; font-size: 80%">
+            <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 10.3%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div  style="width: 47.3%;float: left; min-height: 10px; text-align: right"></div>
+            <div style="width: 1%;float: left; min-height: 10px; text-align: right" class="arrow-up"></div>
+        </div>
+        <div style="width: 100%; min-height: 10px; font-size: 80%">
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left">0</div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: center">{{ mediana / 2 }}</div>
+            <div  style="width: 33.3%;float: left; min-height: 10px; text-align: right">{{ mediana }}</div>
+        </div>
+    {% endblock %}
+    {% endblock %}
     {% block javascripts %}{% endblock %}
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/style.js') }}"></script>
