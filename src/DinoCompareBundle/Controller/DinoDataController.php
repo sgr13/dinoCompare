@@ -16,6 +16,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class DinoDataController extends Controller
 {
     /**
+     * @Route("/entrance")
+     */
+    public function entranceAction()
+    {
+
+        return $this->render('DinoCompareBundle:DinoData:entrance.html.twig', array(
+        // ...
+        ));
+    }
+
+    /**
      * @Route("/new")
      */
     public function newAction()
@@ -77,30 +88,40 @@ class DinoDataController extends Controller
             throw new NotFoundHttpException('Nie znaleziono dinozaura o podanym ID');
         }
 
-        $form = $this->createForm(DinoDataType::class, $dino);
+//      $form = $this->createForm(DinoDataType::class, $dino);
+        $form = $this->createForm(new DinoDataType(), $dino, array(
+            'noPhoto' => true
+        ));
+
+        $photoForm = $this->createForm(new DinoDataType(), $dino, array(
+            'noPhoto' => false,
+            'onlyPhoto' => true
+        ));
+
         $form->handleRequest($request);
+        $photoForm->handleRequest($request);
 
         if ($form->isSubmitted()) {
 
             $dino = $form->getData();
 
             $file = $dino->getPath();
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            var_dump($dino);
 
-            $file->move(
-                $this->getParameter('path_directory'),
-                $fileName
-            );
-
-            $dino->setPath($fileName);
+            $dino->setPath($file);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($dino);
             $em->flush();
         }
 
+
+
+
+
         return $this->render('DinoCompareBundle:DinoData:edit.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'photoForm' => $photoForm->createView()
         ));
     }
 

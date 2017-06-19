@@ -4,15 +4,15 @@
 
 {% block body %}
     {% set i = 0 %}
-    <table id="dinoSel">
+    <table id="dinoSel" width="400">
         {% for suborder in suborders %}
 
             {% if i == 0 or i == 3%}
                 <tr>
             {% endif %}
             <td>
-                <a href="{{ path('selectSuborder', {'id': suborder.id, 'selection': selection}) }}"><img src='{{ asset( suborder.getWebPath ) }}' width="100" height="80"></a><br>
-                {{suborder.name}}
+                <a href="{{ path('selectSuborder', {'id': suborder.id, 'selection': selection}) }}"><img  class="selectionPhoto" src='{{ asset( suborder.getWebPath ) }}' width="165" height="132"></a><br>
+               <span id="dinoSelName"> {{suborder.name}}</span>
             </td>
             {% if i  == 2 or i == 5%}
                 </tr>

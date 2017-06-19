@@ -3,8 +3,15 @@
 {% block title %}Edit Dino{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the DinoData:edit page</h1>
+    <h1 style="text-align: center">Zmień dane:</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+    <h1 style="text-align: center">Załaduj nowe zdjęcie:</h1>
+    <div id="photoEditSpot">
+        <img>
+    </div>
+    {{ form_start(photoForm) }}
+    {{ form_widget(photoForm) }}
+    {{ form_end(photoForm) }}
 {% endblock %}

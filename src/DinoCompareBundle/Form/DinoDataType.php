@@ -33,6 +33,22 @@ class DinoDataType extends AbstractType
             ->add('path', FileType::class, array('data_class' => null))
             ->add('save', 'submit', array('label' => 'Zapisz'))
             ;
+
+        if ($options['noPhoto']) {
+            $builder->remove('path');
+        }
+
+        if ($options['onlyPhoto']) {
+            $builder->remove('name')
+                    ->remove('weight')
+                    ->remove('lenght')
+                    ->remove('height')
+                    ->remove('discoverYear')
+                    ->remove('foodtype')
+                    ->remove('period')
+                    ->remove('dinoOrder')
+                    ->remove('dinoSuborder');
+        }
     }
 
     public function getName()
@@ -43,7 +59,9 @@ class DinoDataType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'DinoCompareBundle\Entity\DinoData'
+            'data_class' => 'DinoCompareBundle\Entity\DinoData',
+            'noPhoto' => false,
+            'onlyPhoto' => false
         ));
     }
 }

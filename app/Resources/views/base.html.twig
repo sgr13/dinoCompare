@@ -8,29 +8,106 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
 </head>
-<body>
+<body
+{% block topPanel %}
 <div id="topPanel">
     <a href="http://localhost:8000/showAll">Wszystkie dinozaury</a> |<a href="http://localhost:8000/create">Dodaj dinozaura</a> | <a href="http://localhost:8000/selectDino">Porównaj dinozaura</a>
 </div>
 <hr>
-<div class="mainContainer row">
-    {% block body %}
+{% endblock %}
+    <div class="mainContainer">
+{% block body %}
 
-    {% block progressBar %}
+    {% block progressBarLeftWeight %}
         <div style="width: 100%; min-height: 10px; font-size: 80%">
             <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
             <div style="width: 33.3%;float: left; min-height: 10px; text-align: left"></div>
-            <div style="width: 10.3%;float: left; min-height: 10px; text-align: left"></div>
-            <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
-            <div  style="width: 47.3%;float: left; min-height: 10px; text-align: right"></div>
+            <div style="width: 12.6%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 3%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div  style="width: 45.3%;float: left; min-height: 10px; text-align: right"></div>
             <div style="width: 1%;float: left; min-height: 10px; text-align: right" class="arrow-up"></div>
         </div>
         <div style="width: 100%; min-height: 10px; font-size: 80%">
-            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left">0</div>
-            <div style="width: 33.3%;float: left; min-height: 10px; text-align: center">{{ mediana / 2 }}</div>
-            <div  style="width: 33.3%;float: left; min-height: 10px; text-align: right">{{ mediana }}</div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left">{{ mediana }} kg.</div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: center">{{ mediana / 2 }} kg.</div>
+            <div  style="width: 33.3%;float: left; min-height: 10px; text-align: right">0 kg.</div>
         </div>
     {% endblock %}
+        {% block progressBarRighttWeight %}
+        <div style="width: 100%; min-height: 10px; font-size: 80%">
+            <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 12.6%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 3%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div  style="width: 45.3%;float: left; min-height: 10px; text-align: right"></div>
+            <div style="width: 1%;float: left; min-height: 10px; text-align: right" class="arrow-up"></div>
+        </div>
+        <div style="width: 100%; min-height: 10px; font-size: 80%">
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left">0 kg.</div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: center">{{ mediana / 2 }} kg.</div>
+            <div  style="width: 33.3%;float: left; min-height: 10px; text-align: right">{{ mediana }} kg.</div>
+        </div>
+    {% endblock %}
+        {% block progressBarLeftLenght %}
+        <div style="width: 100%; min-height: 10px; font-size: 80%">
+            <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 12.6%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 3%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div  style="width: 45.3%;float: left; min-height: 10px; text-align: right"></div>
+            <div style="width: 1%;float: left; min-height: 10px; text-align: right" class="arrow-up"></div>
+        </div>
+        <div style="width: 100%; min-height: 10px; font-size: 80%">
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left">{{ mediana }} m.</div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: center">{{ mediana / 2 }} m.</div>
+            <div  style="width: 33.3%;float: left; min-height: 10px; text-align: right">0 m.</div>
+        </div>
+    {% endblock %}
+        {% block progressBarRightLenght %}
+        <div style="width: 100%; min-height: 10px; font-size: 80%">
+            <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 12.6%;float: left; min-height: 10px; text-align: left"></div>
+            <div style="width: 3%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+            <div  style="width: 45.3%;float: left; min-height: 10px; text-align: right"></div>
+            <div style="width: 1%;float: left; min-height: 10px; text-align: right" class="arrow-up"></div>
+        </div>
+        <div style="width: 100%; min-height: 10px; font-size: 80%">
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: left">0 m.</div>
+            <div style="width: 33.3%;float: left; min-height: 10px; text-align: center">{{ mediana / 2 }} m.</div>
+            <div  style="width: 33.3%;float: left; min-height: 10px; text-align: right">{{ mediana }} m.</div>
+        </div>
+    {% endblock %}
+        {% block progressBarLeftHeight %}
+            <div style="width: 100%; min-height: 10px; font-size: 80%">
+                <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+                <div style="width: 33.3%;float: left; min-height: 10px; text-align: left"></div>
+                <div style="width: 12.6%;float: left; min-height: 10px; text-align: left"></div>
+                <div style="width: 3%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+                <div  style="width: 45.3%;float: left; min-height: 10px; text-align: right"></div>
+                <div style="width: 1%;float: left; min-height: 10px; text-align: right" class="arrow-up"></div>
+            </div>
+            <div style="width: 100%; min-height: 10px; font-size: 80%">
+                <div style="width: 33.3%;float: left; min-height: 10px; text-align: left">{{ mediana }} m.</div>
+                <div style="width: 33.3%;float: left; min-height: 10px; text-align: center">{{ mediana / 2 }} m.</div>
+                <div  style="width: 33.3%;float: left; min-height: 10px; text-align: right">0 m.</div>
+            </div>
+        {% endblock %}
+        {% block progressBarRightHeight %}
+            <div style="width: 100%; min-height: 10px; font-size: 80%">
+                <div style="width: 1%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+                <div style="width: 33.3%;float: left; min-height: 10px; text-align: left"></div>
+                <div style="width: 12.6%;float: left; min-height: 10px; text-align: left"></div>
+                <div style="width: 3%;float: left; min-height: 10px; text-align: left" class="arrow-up"></div>
+                <div  style="width: 45.3%;float: left; min-height: 10px; text-align: right"></div>
+                <div style="width: 1%;float: left; min-height: 10px; text-align: right" class="arrow-up"></div>
+            </div>
+            <div style="width: 100%; min-height: 10px; font-size: 80%">
+                <div style="width: 33.3%;float: left; min-height: 10px; text-align: left">0 m.</div>
+                <div style="width: 33.3%;float: left; min-height: 10px; text-align: center">{{ mediana / 2 }} m.</div>
+                <div  style="width: 33.3%;float: left; min-height: 10px; text-align: right"> m.</div>
+            </div>
+        {% endblock %}
     {% endblock %}
     {% block javascripts %}{% endblock %}
     <script src="{{ asset('js/jquery.js') }}"></script>
