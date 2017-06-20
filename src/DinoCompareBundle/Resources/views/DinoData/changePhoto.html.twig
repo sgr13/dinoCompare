@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Edit Dino{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center">Załadowane zdjęcie:</h1>
+    <img src='{{ asset( dino.getWebPath ) }}' width="400" height="320">
+
+    <h1 style="text-align: center">Zmień zdjęcie:</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

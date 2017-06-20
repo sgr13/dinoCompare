@@ -21,8 +21,7 @@ class DinoDataController extends Controller
     public function entranceAction()
     {
 
-        return $this->render('DinoCompareBundle:DinoData:entrance.html.twig', array(
-        // ...
+        return $this->render('DinoCompareBundle:DinoData:entrance.html.twig', array(// ...
         ));
     }
 
@@ -99,14 +98,12 @@ class DinoDataController extends Controller
         ));
 
         $form->handleRequest($request);
-        $photoForm->handleRequest($request);
 
         if ($form->isSubmitted()) {
 
             $dino = $form->getData();
 
             $file = $dino->getPath();
-            var_dump($dino);
 
             $dino->setPath($file);
 
@@ -114,10 +111,6 @@ class DinoDataController extends Controller
             $em->persist($dino);
             $em->flush();
         }
-
-
-
-
 
         return $this->render('DinoCompareBundle:DinoData:edit.html.twig', array(
             'form' => $form->createView(),
@@ -147,11 +140,32 @@ class DinoDataController extends Controller
     /**
      * @Route("/showAll")
      */
-    public function showAll()
+    public function showAll(Request $request)
     {
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
 
-        $dinos = $dinoRepository->findAll();
+        $dinos = $dinoRepository->findBy(
+            array(),
+            array('name' => 'ASC')
+        );
+
+        $text = $request->get('text');
+
+        if (isset($text)) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $repository = $em->getRepository('DinoCompareBundle:DinoData');
+
+            $query = $repository->createQueryBuilder('p')
+                ->where('p.name Like :word')
+                ->setParameter('word', '%' . $text . '%')
+                ->getQuery();
+
+            $dinos = $query->getResult();
+
+            return $this->render('DinoCompareBundle:DinoData:showAll.html.twig', array('dinos' => $dinos));
+        }
 
         return $this->render('DinoCompareBundle:DinoData:showAll.html.twig', array('dinos' => $dinos));
     }
@@ -269,4 +283,24 @@ class DinoDataController extends Controller
         }
         return new RedirectResponse($this->generateUrl('selectDino'));
     }
+
+    /**
+     * @Route("/changePhoto/{id}", name="changePhoto")
+     */
+    public function changePhotoAction(Request $request, $id)
+    {
+        $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
+
+        $dino = $dinoRepository->find($id);
+
+        $form = $this->createForm(DinoDataType::class, $dino);
+
+        $form->handleRequest($request);
+
+        return $this->render('DinoCompareBundle:DinoData:changePhoto.html.twig', array(
+            'dino' => $dino,
+            'form' => $form
+        ));
+    }
+
 }

@@ -3,21 +3,29 @@
 {% block title %}DinoCompareBundle:DinoData:showAll{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the DinoData:showAll page</h1>
-    <table>Wszystkie dinozaury:
+    <h1>Wszystkie dinozaury</h1>
+    <form method="POST" action="showAll">Wyszukaj dinozaura:
+        <input type="text" name="text">
+        <input type="submit" value="Wyszukaj">
+    </form>
+
+    <table>
         <tr>
-            <th>Nazwa</th><th>Waga</th><th>Długość</th><th>Wysokość</th><th>Rok odkrycia</th>
-            <th>Typ</th><th>Okres</th><th>Rząd</th><th>Podrząd</th><th>Edytuj</th><th>Usuń</th>
+            <th>LP</th><th>Nazwa</th><th>Waga</th><th>Długość</th><th>Wysokość</th><th>Rok odkrycia</th>
+            <th>Typ</th><th>Okres</th><th>Rząd</th><th>Podrząd</th><th>Edytuj</th><th>Usuń</th><th>Zdjęcie</th>
         </tr>
+        {% set i = 1 %}
         {% for dino in dinos %}
             <tr>
-                <td>{{dino.name}} </td><td>{{dino.weight}}</td><td>{{dino.lenght}}</td>
+                <td>{{ i }}</td><td>{{dino.name}} </td><td>{{dino.weight}}</td><td>{{dino.lenght}}</td>
                 <td>{{dino.height}}</td><td>{{dino.discoverYear}}</td><td>{{dino.foodType.name}}</td>
                 <td>{{dino.period.name}}</td><td>{{dino.dinoOrder.name}}</td><td>{{dino.dinoSuborder.name}}</td>
-                <td><a href="http://localhost:8000/edit/{{ dino.id }}">Edytuj</a></td>
-                <td><a href="http://localhost:8000/delete/{{ dino.id }}">Usuń</a></td>
+                <td><a href="http://localhost:8000/edit/{{ dino.id }}"><button>Edytuj</button></a></td>
+                <td><a href="http://localhost:8000/delete/{{ dino.id }}"><button>Usuń</button></a></td>
+                <td><a href="http://localhost:8000/changePhoto/{{ dino.id }}"><button>Zmień</button></a></td>
             </li>
             </tr>
+            {% set i = i + 1 %}
         {% endfor %}
     </table>
 {% endblock %}
