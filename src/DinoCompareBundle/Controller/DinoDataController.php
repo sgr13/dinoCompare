@@ -41,9 +41,7 @@ class DinoDataController extends Controller
     public function createAction(Request $request)
     {
         $dino = new DinoData();
-
         $form = $this->createForm(DinoDataType::class, $dino);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
@@ -57,13 +55,9 @@ class DinoDataController extends Controller
                 $fileName
             );
 
-
             $dino->setPath($fileName);
-
             $em = $this->getDoctrine()->getManager();
-
             $em->persist($dino);
-
             $em->flush();
 
             return new Response("Dodano nowego Dinozaura");
@@ -80,7 +74,6 @@ class DinoDataController extends Controller
     public function editAction(Request $request, $id)
     {
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
-
         $dino = $dinoRepository->find($id);
 
         if (!$dino) {
@@ -91,19 +84,12 @@ class DinoDataController extends Controller
             'noPhoto' => true
         ));
 
-        $photoForm = $this->createForm(new DinoDataType(), $dino, array(
-            'noPhoto' => false,
-            'onlyPhoto' => true
-        ));
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
 
             $dino = $form->getData();
-
             $file = $dino->getPath();
-
             $dino->setPath($file);
 
             $em = $this->getDoctrine()->getManager();
@@ -113,7 +99,6 @@ class DinoDataController extends Controller
 
         return $this->render('DinoCompareBundle:DinoData:edit.html.twig', array(
             'form' => $form->createView(),
-            'photoForm' => $photoForm->createView()
         ));
     }
 
@@ -123,7 +108,6 @@ class DinoDataController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $dino = $em->getRepository('DinoCompareBundle:DinoData')->find($id);
 
         if (!$dino) {
@@ -142,7 +126,6 @@ class DinoDataController extends Controller
     public function showAll(Request $request)
     {
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
-
         $dinos = $dinoRepository->findBy(
             array(),
             array('name' => 'ASC')
@@ -153,14 +136,11 @@ class DinoDataController extends Controller
         if (isset($text)) {
 
             $em = $this->getDoctrine()->getManager();
-
             $repository = $em->getRepository('DinoCompareBundle:DinoData');
-
             $query = $repository->createQueryBuilder('p')
                 ->where('p.name Like :word')
                 ->setParameter('word', '%' . $text . '%')
                 ->getQuery();
-
             $dinos = $query->getResult();
 
             return $this->render('DinoCompareBundle:DinoData:showAll.html.twig', array('dinos' => $dinos));
@@ -186,13 +166,9 @@ class DinoDataController extends Controller
         }
 
         $dinosaur = $request->get('dinosaur');
-
         $dinosaur1 = $request->get('dinosaur1');
-
         $em = $this->getDoctrine()->getManager();
-
         $dino = $em->getRepository('DinoCompareBundle:DinoData')->find($dinosaur);
-
         $dino1 = $em->getRepository('DinoCompareBundle:DinoData')->find($dinosaur1);
 
         return $this->render('DinoCompareBundle:DinoData:compareForm.html.twig', array(
@@ -206,9 +182,7 @@ class DinoDataController extends Controller
     public function selectDino(Request $request)
     {
         $session = $request->getSession();
-
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
-
         $dinos = $dinoRepository->findAll();
 
         if ($session->has('dino1')) {
@@ -238,11 +212,8 @@ class DinoDataController extends Controller
     {
 
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
-
         $dinos = $dinoRepository->findAll();
-
         $suborderRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoSuborder');
-
         $suborders = $suborderRepository->findAll();
 
         return $this->render('DinoCompareBundle:DinoData:graphicSelection.html.twig', array('dinos' => $dinos, 'suborders' => $suborders, 'selection' => $id));
@@ -253,9 +224,7 @@ class DinoDataController extends Controller
      */
     public function selectSuborder(Request $request, $id, $selection)
     {
-
         $em = $this->getDoctrine()->getManager();
-
         $dinos = $em->getRepository('DinoCompareBundle:DinoData')->findByDinoSuborder($id);
 
         if (!$dinos) {
@@ -270,7 +239,6 @@ class DinoDataController extends Controller
      */
     public function idSaveToSession(Request $request, $id, $selection)
     {
-
         $session = $request->getSession();
 
         if ($selection == 1) {
@@ -289,16 +257,36 @@ class DinoDataController extends Controller
     public function changePhotoAction(Request $request, $id)
     {
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
-
         $dino = $dinoRepository->find($id);
+        $photoForm = $this->createForm(new DinoDataType(), $dino, array(
+            'noPhoto' => false,
+            'onlyPhoto' => true
+        ));
 
-        $form = $this->createForm(DinoDataType::class, $dino);
+        $photoForm->handleRequest($request);
 
-        $form->handleRequest($request);
+        if ($photoForm->isSubmitted()) {
+
+            $dino = $photoForm->getData();
+            $file = $dino->getPath();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            $file->move(
+                $this->getParameter('path_directory'),
+                $fileName
+            );
+
+            $dino->setPath($fileName);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($dino);
+            $em->flush();
+
+            return new Response("Zmieniono zdjęcie Dinozaura");
+        }
 
         return $this->render('DinoCompareBundle:DinoData:changePhoto.html.twig', array(
             'dino' => $dino,
-            'form' => $form
+            'form' => $photoForm->createView()
         ));
     }
 
