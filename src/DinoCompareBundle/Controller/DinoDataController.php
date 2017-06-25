@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class DinoDataController extends Controller
 {
@@ -37,6 +38,7 @@ class DinoDataController extends Controller
 
     /**
      * @Route("/create", name="createDino")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function createAction(Request $request)
     {
@@ -70,6 +72,7 @@ class DinoDataController extends Controller
 
     /**
      * @Route("/edit/{id}")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(Request $request, $id)
     {
@@ -104,6 +107,7 @@ class DinoDataController extends Controller
 
     /**
      * @Route("/delete/{id}")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, $id)
     {
@@ -121,7 +125,8 @@ class DinoDataController extends Controller
     }
 
     /**
-     * @Route("/showAll")
+     * @Route("/showAll", name="showAll")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showAll(Request $request)
     {
@@ -253,6 +258,7 @@ class DinoDataController extends Controller
 
     /**
      * @Route("/changePhoto/{id}", name="changePhoto")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function changePhotoAction(Request $request, $id)
     {
@@ -292,19 +298,11 @@ class DinoDataController extends Controller
 
     /**
      * @Route("/adminLogin", name="adminLogin")
+     * @Security("has_role('ROLE_ADMIN')")
      * Method("post")
      */
-    public function adminLoginAction(Request $request)
+    public function adminLoginAction( )
     {
-        if (!$request->request->get('name') == null) {
-            $name = $request->request->get('name');
-            $password = $request->request->get('password');
-
-            var_dump($name);
-            var_dump($password);
-        }
-
-
         return $this->render('DinoCompareBundle:DinoData:adminLogin.html.twig', array (
 
         ));

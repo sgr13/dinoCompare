@@ -3,11 +3,13 @@
 {% block title %}Admin Login Form{% endblock %}
 
 {% block body %}
-<form action="adminLogin" method="post">
-    Login:<br>
-    <input type="text" name="name"><br>
-    Hasło:<br>
-    <input type="password" name="password"><br>
-    <input type="submit" value="Zaloguj">
-</form>
+<a href="create"><div>
+<p>Dodaj nowego Dinozaura</p>
+</div></a>
+<a href="showAll"><div>
+<p>Pokaż wszystkie dinozaury</p>
+</div></a>
+<a href="selectDino"><div>
+<p>Porównaj dinozaura</p>
+</div></a>
 {% endblock %}

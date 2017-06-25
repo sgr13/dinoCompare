@@ -3,11 +3,15 @@
 {% block title %}DinoCompareBundle:DinoData:selectDino{% endblock %}
 
 {% block body %}
+    {% block topPanel %}
+    {% endblock %}
+    <div id="topPanel">
+        <a href="{{ asset("selectDino") }}">Nowe porównanie</a>
+    </div>
     <h1>Welcome to the DinoData:selectDino</h1>
     {% set i = 0 %}
     <table id="dinoSel">
         {% for dino in dinos %}
-
             {% if i == 0 or i == 3%}
                 <tr>
             {% endif %}

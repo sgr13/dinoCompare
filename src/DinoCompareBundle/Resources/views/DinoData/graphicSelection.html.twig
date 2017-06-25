@@ -3,6 +3,11 @@
 {% block title %}Wybierz Podrząd:{% endblock %}
 
 {% block body %}
+    {% block topPanel %}
+    {% endblock %}
+    <div id="topPanel">
+        <a href="{{ asset("selectDino") }}">Nowe porównanie</a>
+    </div>
     {% set i = 0 %}
     <table id="dinoSel" width="400">
         {% for suborder in suborders %}
