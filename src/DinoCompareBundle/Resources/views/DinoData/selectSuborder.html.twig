@@ -12,14 +12,15 @@
     {% set i = 0 %}
     <table id="dinoSel">
         {% for dino in dinos %}
-            {% if i == 0 or i == 3%}
+            {% if i == 0 or i == 3 %}
                 <tr>
             {% endif %}
             <td>
-                <a href="{{ path('idSaveToSession', {'id': dino.id, 'selection': selection}) }}"><img src='{{ asset( dino.getWebPath ) }}' width="100" height="80"></a><br>
-                {{dino.name}}
+                <a href="{{ path('idSaveToSession', {'id': dino.id, 'selection': selection}) }}"><img
+                            src='{{ asset( dino.getWebPath ) }}' width="100" height="80"></a><br>
+                {{ dino.name }}
             </td>
-            {% if i  == 2 or i == 5%}
+            {% if i  == 2 or i == 5 %}
                 </tr>
             {% endif %}
             {% set i = i + 1 %}

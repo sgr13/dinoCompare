@@ -21,19 +21,7 @@ class DinoDataController extends Controller
      */
     public function entranceAction()
     {
-
-        return $this->render('DinoCompareBundle:DinoData:entrance.html.twig', array(// ...
-        ));
-    }
-
-    /**
-     * @Route("/new")
-     */
-    public function newAction()
-    {
-
-        return $this->render('DinoCompareBundle:DinoData:new.html.twig', array(// ...
-        ));
+        return $this->render('DinoCompareBundle:DinoData:entrance.html.twig', array());
     }
 
     /**
@@ -64,7 +52,6 @@ class DinoDataController extends Controller
 
             return new Response("Dodano nowego Dinozaura");
         }
-
         return $this->render('DinoCompareBundle:DinoData:create.html.twig', array(
             'form' => $form->createView()
         ));
@@ -99,7 +86,6 @@ class DinoDataController extends Controller
             $em->persist($dino);
             $em->flush();
         }
-
         return $this->render('DinoCompareBundle:DinoData:edit.html.twig', array(
             'form' => $form->createView(),
         ));
@@ -150,7 +136,6 @@ class DinoDataController extends Controller
 
             return $this->render('DinoCompareBundle:DinoData:showAll.html.twig', array('dinos' => $dinos));
         }
-
         return $this->render('DinoCompareBundle:DinoData:showAll.html.twig', array('dinos' => $dinos));
     }
 
@@ -207,7 +192,9 @@ class DinoDataController extends Controller
             $dinoSelected2 = null;
         }
 
-        return $this->render('DinoCompareBundle:DinoData:selectDino.html.twig', array('dinos' => $dinos, 'dino1' => $dinoSelected1, 'dino2' => $dinoSelected2));
+        return $this->render('DinoCompareBundle:DinoData:selectDino.html.twig', array(
+            'dinos' => $dinos, 'dino1' => $dinoSelected1, 'dino2' => $dinoSelected2
+        ));
     }
 
     /**
@@ -301,11 +288,8 @@ class DinoDataController extends Controller
      * @Security("has_role('ROLE_ADMIN')")
      * Method("post")
      */
-    public function adminLoginAction( )
+    public function adminLoginAction()
     {
-        return $this->render('DinoCompareBundle:DinoData:adminLogin.html.twig', array (
-
-        ));
+        return $this->render('DinoCompareBundle:DinoData:adminLogin.html.twig', array());
     }
-
 }

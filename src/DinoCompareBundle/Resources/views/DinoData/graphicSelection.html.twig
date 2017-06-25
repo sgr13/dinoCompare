@@ -12,14 +12,17 @@
     <table id="dinoSel" width="400">
         {% for suborder in suborders %}
 
-            {% if i == 0 or i == 3%}
+            {% if i == 0 or i == 3 %}
                 <tr>
             {% endif %}
             <td>
-                <a class="imgWrapper" href="{{ path('selectSuborder', {'id': suborder.id, 'selection': selection}) }}"><img  class="selectionPhoto" src='{{ asset( suborder.getWebPath ) }}' width="165" height="132"></a><br>
-               <span id="dinoSelName"> {{suborder.name}}</span>
+                <a class="imgWrapper"
+                   href="{{ path('selectSuborder', {'id': suborder.id, 'selection': selection}) }}"><img
+                            class="selectionPhoto" src='{{ asset( suborder.getWebPath ) }}' width="165"
+                            height="132"></a><br>
+                <span id="dinoSelName"> {{ suborder.name }}</span>
             </td>
-            {% if i  == 2 or i == 5%}
+            {% if i  == 2 or i == 5 %}
                 </tr>
             {% endif %}
             {% set i = i + 1 %}

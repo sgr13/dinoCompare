@@ -37,7 +37,7 @@ class DinoOrder
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,7 +60,7 @@ class DinoOrder
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {

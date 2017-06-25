@@ -6,42 +6,53 @@
     {% block topPanel %}
     {% endblock %}
     <h1>Nowe porównanie</h1>
-    <div>
-        <h2>Wybierz dinozaury z listy</h2>
-        <p>Wybierz dinozaura nr 1</p>
-        <form method="post" action="{{ path('compare')}}">
+    <h2>Wybierz dinozaury z listy</h2>
+    <form method="post" action="{{ path('compare') }}">
+        <div id="firstDinoSelect">
+            <p>Wybierz dinozaura nr 1</p>
             <select name="dinosaur">
                 {% if dino1 is not null %}
                     <option value="{{ dino1.id }}">
                         {{ dino1.name }}
                     </option>
                 {% else %}
-                {% for dino in dinos %}
-                    <option value="{{ dino.id }}">
-                        {{ dino.name }}
-                    </option>
-                {% endfor %}
+                    {% for dino in dinos %}
+                        <option value="{{ dino.id }}">
+                            {{ dino.name }}
+                        </option>
+                    {% endfor %}
                 {% endif %}
             </select>
-
-        <a href="{{ path('graphic', {'id':1})}}">Wybierz...</a>
-        <p>Wybierz dinozaura nr 2</p>
-
+            <a href="{{ path('graphic', {'id':1}) }}">Szukaj dinozaura...</a>
+            {% if dino1.webPath is defined %}
+                <div>
+                    <img src="{{ dino1.webPath }}" width="240" height="160">
+                </div>
+            {% endif %}
+        </div>
+        <div id="seconDinoSelect">
+            <p>Wybierz dinozaura nr 2</p>
             <select name="dinosaur1">
                 {% if dino2 is not null %}
                     <option value="{{ dino2.id }}">
                         {{ dino2.name }}
                     </option>
                 {% else %}
-                {% for dino in dinos %}
-                    <option value="{{ dino.id }}">
-                        {{ dino.name }}
-                    </option>
-                {% endfor %}
+                    {% for dino in dinos %}
+                        <option value="{{ dino.id }}">
+                            {{ dino.name }}
+                        </option>
+                    {% endfor %}
                 {% endif %}
             </select>
-            <a href="{{ path('graphic', {'id':2})}}">Wybierz...</a>
-            <p><input type="submit" value="Porównaj"></p>
-        </form>
-    </div>
+            <a href="{{ path('graphic', {'id':2}) }}">Szukaj dinozaura...</a>
+            {% if dino2.webPath is defined %}
+                <div>
+                    <img src="{{ dino2.webPath }}" width="240" height="160">
+                </div>
+            {% endif %}
+        </div>
+        <hr>
+        <p><input type="submit" value="Porównaj"></p>
+    </form>
 {% endblock %}

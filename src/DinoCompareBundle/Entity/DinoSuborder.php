@@ -44,7 +44,7 @@ class DinoSuborder
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -67,7 +67,7 @@ class DinoSuborder
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -108,7 +108,7 @@ class DinoSuborder
 
     public function getWebPath()
     {
-        return 'photo/'.$this->suborderPath;
+        return 'photo/' . $this->suborderPath;
     }
 
 }

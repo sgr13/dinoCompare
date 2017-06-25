@@ -88,7 +88,7 @@ class DinoData
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -127,7 +127,7 @@ class DinoData
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -182,7 +182,7 @@ class DinoData
     /**
      * Get weight
      *
-     * @return float 
+     * @return float
      */
     public function getWeight()
     {
@@ -205,7 +205,7 @@ class DinoData
     /**
      * Get lenght
      *
-     * @return float 
+     * @return float
      */
     public function getLenght()
     {
@@ -228,7 +228,7 @@ class DinoData
     /**
      * Get height
      *
-     * @return float 
+     * @return float
      */
     public function getHeight()
     {
@@ -251,7 +251,7 @@ class DinoData
     /**
      * Get discoverYear
      *
-     * @return integer 
+     * @return integer
      */
     public function getDiscoverYear()
     {
@@ -292,7 +292,7 @@ class DinoData
 
     public function getWebPath()
     {
-        return 'photo/'.$this->path;
+        return 'photo/' . $this->path;
     }
 
 }

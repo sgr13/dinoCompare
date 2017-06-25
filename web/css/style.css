@@ -143,36 +143,15 @@ form {
 
 .wrapper {
     border: solid 3px red;
-    /*-webkit-transition: all 2s ease;*/
-    /*-moz-transition: all 2s ease;*/
-    /*-ms-transition: all 2s ease;*/
-    /*transition: all 2s ease;*/
 }
 
+#firstDinoSelect {
+    float: left;
+    border-right: solid 1px black;
+    margin-right: 20px;
+    padding-right: 40px;
+}
 
-/*.wrapper:hover {*/
-    /*width: 384px;*/
-    /*height: 240px;*/
-/*}*/
-
-/*--------------------------------*/
-
-/*.frame {*/
-    /*height: 280px;*/
-    /*width: 350px;*/
-    /*overflow: hidden;*/
-/*}*/
-
-/*.zoomin img {*/
-    /*height: 280px;*/
-    /*width: 350px;*/
-    /*-webkit-transition: all 2s ease;*/
-    /*-moz-transition: all 2s ease;*/
-    /*-ms-transition: all 2s ease;*/
-    /*transition: all 2s ease;*/
-/*}*/
-
-/*.zoomin img:hover {*/
-    /*width: 400px;*/
-    /*height: 300px;*/
-/*}*/
+#secondDinoSelect {
+    float: left;
+}
