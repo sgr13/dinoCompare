@@ -87,7 +87,6 @@ class DinoDataController extends Controller
             throw new NotFoundHttpException('Nie znaleziono dinozaura o podanym ID');
         }
 
-//      $form = $this->createForm(DinoDataType::class, $dino);
         $form = $this->createForm(new DinoDataType(), $dino, array(
             'noPhoto' => true
         ));

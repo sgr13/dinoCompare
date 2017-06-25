@@ -32,7 +32,7 @@ $(document).ready(function () {
     }
 
 
-    /////////////////////////////////////////
+    ///////////////////////////////////
     $first = ($("#height").children().children().html());
     $second = ($("#height").children().next().next().children().html());
 
@@ -61,11 +61,11 @@ $(document).ready(function () {
         }, 2000)
     });
 
-    //$('.selectionPhoto').mouseover(function () {
-    //    console.log("wtf");
-    //    $(this).width(195);
-    //    $(this).height(152);
-    //})
+    $('.selectionPhoto').mouseover(function () {
+        console.log("wtf");
+        $(this).width(195);
+        $(this).height(152);
+    })
 
     //$('.selectionPhoto').mouseout(function () {
     //    $(this).width(165);
