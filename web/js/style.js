@@ -48,29 +48,4 @@ $(document).ready(function () {
         $("#height").children().next().next().addClass('winner');
     }
 
-    $('#entranceButton').mouseover(function() {
-        $('#entranceButton').animate({
-            width: 850
-        }, 2000)
-
-    });
-
-    $('#entranceButton').mouseout(function() {
-        $('#entranceButton').animate({
-            width: 700
-        }, 2000)
-    });
-
-    $('.selectionPhoto').mouseover(function () {
-        console.log("wtf");
-        $(this).width(195);
-        $(this).height(152);
-    })
-
-    //$('.selectionPhoto').mouseout(function () {
-    //    $(this).width(165);
-    //    $(this).height(132);
-    //})
-
-
 })

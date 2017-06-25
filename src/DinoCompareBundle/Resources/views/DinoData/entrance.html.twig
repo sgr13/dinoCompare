@@ -5,10 +5,10 @@
 {% block body %}
     {% block topPanel %}
     {% endblock %}
-    <a href="#"><button>Admin</button></a>
+    <a href="{{ asset('adminLogin') }}"><button>Admin</button></a>
     <h1 style="text-align: center">Welcome to the DinoData</h1>
     <div style="width: 900px; text-align: center; margin-left: 12%">
-        <a href="{{ asset('selectDino') }}"><img src="photo/but.jpg" width="700" id="entranceButton"></a>
+        <a href="{{ asset('selectDino') }}"><img src="/photo/but.jpg" width="700" id="entranceButton"></a>
         <h2 style="text-align: center">PORÓWNYWARKA DINOZAURÓW</h2>
     </div>
 {% endblock %}

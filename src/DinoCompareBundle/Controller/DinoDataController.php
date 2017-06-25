@@ -290,4 +290,24 @@ class DinoDataController extends Controller
         ));
     }
 
+    /**
+     * @Route("/adminLogin", name="adminLogin")
+     * Method("post")
+     */
+    public function adminLoginAction(Request $request)
+    {
+        if (!$request->request->get('name') == null) {
+            $name = $request->request->get('name');
+            $password = $request->request->get('password');
+
+            var_dump($name);
+            var_dump($password);
+        }
+
+
+        return $this->render('DinoCompareBundle:DinoData:adminLogin.html.twig', array (
+
+        ));
+    }
+
 }
