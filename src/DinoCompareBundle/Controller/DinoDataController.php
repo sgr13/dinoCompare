@@ -126,6 +126,9 @@ class DinoDataController extends Controller
 
         if (isset($text)) {
 
+//            $em = $this->getDoctrine()->getManager();
+//            $dinos = $em->getRepository('DinoCompareBundle:DinoData')->findDinoByName($text);
+
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository('DinoCompareBundle:DinoData');
             $query = $repository->createQueryBuilder('p')
@@ -147,22 +150,23 @@ class DinoDataController extends Controller
     {
         $session = $request->getSession();
 
-        if ($session->has('dino1')) {
-            $session->remove('dino1');
+        if ($session->has('firstDino')) {
+            $session->remove('firstDino');
         }
 
-        if ($session->has('dino2')) {
-            $session->remove('dino2');
+        if ($session->has('secondDino')) {
+            $session->remove('secondDino');
         }
 
-        $dinosaur = $request->get('dinosaur');
-        $dinosaur1 = $request->get('dinosaur1');
+        $firstDinoName = $request->get('firstDinosaur');
+        $secondDinoName = $request->get('secondDinosaur');
         $em = $this->getDoctrine()->getManager();
-        $dino = $em->getRepository('DinoCompareBundle:DinoData')->find($dinosaur);
-        $dino1 = $em->getRepository('DinoCompareBundle:DinoData')->find($dinosaur1);
+        $dinoRepository = $em->getRepository('DinoCompareBundle:DinoData');
+        $firstDino = $dinoRepository->find($firstDinoName);
+        $secondDino = $dinoRepository->find($secondDinoName);
 
         return $this->render('DinoCompareBundle:DinoData:compareForm.html.twig', array(
-            'dino' => $dino, 'dino1' => $dino1
+            'firstDino' => $firstDino, 'secondDino' => $secondDino
         ));
     }
 
@@ -175,25 +179,25 @@ class DinoDataController extends Controller
         $dinoRepository = $this->getDoctrine()->getRepository('DinoCompareBundle:DinoData');
         $dinos = $dinoRepository->findAll();
 
-        if ($session->has('dino1')) {
+        if ($session->has('firstDino')) {
             $session = $request->getSession();
-            $dino1 = $session->get('dino1');
-            $dinoSelected1 = $dinoRepository->find($dino1);
+            $firstDino = $session->get('firstDino');
+            $firstDinoSelected = $dinoRepository->find($firstDino);
         } else {
-            $dinoSelected1 = null;
+            $firstDinoSelected = null;
         }
 
-        if ($session->has('dino2')) {
+        if ($session->has('secondDino')) {
             $session = $request->getSession();
-            $dino2 = $session->get('dino2');
-            $dinoSelected2 = $dinoRepository->find($dino2);
-            $session->remove('dino2');
+            $secondDino = $session->get('secondDino');
+            $secondDinoSelected = $dinoRepository->find($secondDino);
+            $session->remove('secondDino');
         } else {
-            $dinoSelected2 = null;
+            $secondDinoSelected = null;
         }
 
         return $this->render('DinoCompareBundle:DinoData:selectDino.html.twig', array(
-            'dinos' => $dinos, 'dino1' => $dinoSelected1, 'dino2' => $dinoSelected2
+            'dinos' => $dinos, 'firstDino' => $firstDinoSelected, 'secondDino' => $secondDinoSelected
         ));
     }
 
@@ -234,11 +238,11 @@ class DinoDataController extends Controller
         $session = $request->getSession();
 
         if ($selection == 1) {
-            $session->set('dino1', $id);
+            $session->set('firstDino', $id);
         }
 
         if ($selection == 2) {
-            $session->set('dino2', $id);
+            $session->set('secondDino', $id);
         }
         return new RedirectResponse($this->generateUrl('selectDino'));
     }

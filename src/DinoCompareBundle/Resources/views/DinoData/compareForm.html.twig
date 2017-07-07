@@ -10,27 +10,27 @@
     </div>
     <div class="col-md-12"><h1 style="text-align: center">Porównywarka Dinozaurów</h1></div>
     <table id="dinoTable" class="col-md-12">
-        <th>{{ dino.name }}</th>
+        <th>{{ firstDino.name }}</th>
         <th>Kategoria:</th>
-        <th>{{ dino1.name }}</th>
+        <th>{{ secondDino.name }}</th>
         <tr>
-            <td class="dinoPhoto"><img src="{{ dino.webPath }}" width="320" height="200" class="wrapper"></td>
+            <td class="dinoPhoto"><img src="{{ firstDino.webPath }}" width="320" height="200" class="wrapper"></td>
             <td></td>
 
-            <td class="dinoPhoto"><img src="{{ dino1.webPath }}" width="320" height="200" class="wrapper"></td>
+            <td class="dinoPhoto"><img src="{{ secondDino.webPath }}" width="320" height="200" class="wrapper"></td>
         </tr>
 
         {#---------------------------------------------------------------------------------------------------#}
 
         <tr id="weight">
             <td class="firstDinoRow">
-                {% if dino.weight+dino1.weight < 1000 %}
-                    {% set mediana = (((dino.weight + dino1.weight) / 10)|round(0, 'ceil')) * 10 %}
+                {% if firstDino.weight+secondDino.weight < 1000 %}
+                    {% set mediana = (((firstDino.weight + secondDino.weight) / 10)|round(0, 'ceil')) * 10 %}
                 {% else %}
-                    {% set mediana = (((dino.weight + dino1.weight) / 1000)|round(0, 'ceil')) * 1000 %}
+                    {% set mediana = (((firstDino.weight + secondDino.weight) / 1000)|round(0, 'ceil')) * 1000 %}
                 {% endif %}
-                {% set graphicPresentation = ((mediana - dino.weight) * 100) / mediana %}
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino.weight }} kg.</div>
+                {% set graphicPresentation = ((mediana - firstDino.weight) * 100) / mediana %}
+                <div style="padding-bottom: 10px; font-size: 25px">{{ firstDino.weight }} kg.</div>
                 <div class="progress180">
                     <div class="progress-bar180" role="progressbar" aria-valuenow="70"
                          aria-valuemin="0" aria-valuemax="100" style="width:{{ graphicPresentation }}%">
@@ -41,9 +41,9 @@
                 {% endblock %}
             </td>
             <td>Waga</td>
-            {% set graphicPresentation = (dino1.weight * 100) / mediana %}
+            {% set graphicPresentation = (secondDino.weight * 100) / mediana %}
             <td>
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino1.weight }} kg.</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.weight }} kg.</div>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
                          aria-valuemin="0" aria-valuemax="100" style="width:{{ graphicPresentation }}%">
@@ -61,10 +61,10 @@
 
         <tr id="lenght">
             <td class="firstDinoRow">
-                {% set mediana = (((dino.lenght + dino1.lenght) / 2)|round(0, 'ceil'))*2 %}
-                {% set graphicPresentation = ((mediana - dino.lenght) * 100) / mediana %}
+                {% set mediana = (((firstDino.lenght + secondDino.lenght) / 2)|round(0, 'ceil'))*2 %}
+                {% set graphicPresentation = ((mediana - firstDino.lenght) * 100) / mediana %}
 
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino.lenght }} m.</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ firstDino.lenght }} m.</div>
                 <div class="progress180">
                     <div class="progress-bar180" role="progressbar" aria-valuenow="70"
                          aria-valuemin="0" aria-valuemax="100" style="width:{{ graphicPresentation }}%">
@@ -75,9 +75,9 @@
                 {% endblock %}
             </td>
             <td>Długość</td>
-            {% set graphicPresentation = (dino1.lenght * 100) / mediana %}
+            {% set graphicPresentation = (secondDino.lenght * 100) / mediana %}
             <td>
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino1.lenght }} m.</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.lenght }} m.</div>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
                          aria-valuemin="0" aria-valuemax="100" style="width:{{ graphicPresentation }}%">
@@ -94,9 +94,9 @@
 
         <tr id="height">
             <td class="firstDinoRow">
-                {% set mediana = (((dino.height + dino1.height) / 2)|round(0, 'ceil'))*2 %}
-                {% set graphicPresentation = ((mediana - dino.height) * 100) / mediana %}
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino.height }} m.</div>
+                {% set mediana = (((firstDino.height + secondDino.height) / 2)|round(0, 'ceil'))*2 %}
+                {% set graphicPresentation = ((mediana - firstDino.height) * 100) / mediana %}
+                <div style="padding-bottom: 10px; font-size: 25px">{{ firstDino.height }} m.</div>
                 <div class="progress180">
                     <div class="progress-bar180" role="progressbar" aria-valuenow="70"
                          aria-valuemin="0" aria-valuemax="100" style="width:{{ graphicPresentation }}%">
@@ -107,9 +107,9 @@
                 {% endblock %}
             </td>
             <td>Wysokość</td>
-            {% set graphicPresentation = (dino1.height * 100) / mediana %}
+            {% set graphicPresentation = (secondDino.height * 100) / mediana %}
             <td>
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino1.height }} m.</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.height }} m.</div>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
                          aria-valuemin="0" aria-valuemax="100" style="width:{{ graphicPresentation }}%">
@@ -122,47 +122,47 @@
         </tr>
         <tr>
             <td class="firstDinoRow">
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino.discoverYear }} r.</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ firstDino.discoverYear }} r.</div>
             </td>
             <td>Rok odkrycia</td>
             <td>
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino1.discoverYear }} r.</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.discoverYear }} r.</div>
             </td>
         </tr>
         <tr>
             <td class="firstDinoRow">
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino.foodType.name }}</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ firstDino.foodType.name }}</div>
             </td>
             <td>Typ</td>
             <td>
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino1.foodType.name }}</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.foodType.name }}</div>
             </td>
         </tr>
         <tr>
             <td class="firstDinoRow">
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino.period.name }}</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ firstDino.period.name }}</div>
             </td>
             <td>Okres</td>
             <td>
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino1.period.name }}</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.period.name }}</div>
             </td>
         </tr>
         <tr>
             <td class="firstDinoRow">
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino.dinoOrder.name }}</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ firstDino.dinoOrder.name }}</div>
             </td>
             <td>Rząd</td>
             <td>
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino1.dinoOrder.name }}</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.dinoOrder.name }}</div>
             </td>
         </tr>
         <tr>
             <td class="firstDinoRow">
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino.dinoSuborder.name }}</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ firstDino.dinoSuborder.name }}</div>
             </td>
             <td>Podrząd</td>
             <td>
-                <div style="padding-bottom: 10px; font-size: 25px">{{ dino1.dinoSuborder.name }}</div>
+                <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.dinoSuborder.name }}</div>
             </td>
         </tr>
     </table>

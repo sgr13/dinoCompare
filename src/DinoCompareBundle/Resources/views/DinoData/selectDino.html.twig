@@ -10,10 +10,10 @@
     <form method="post" action="{{ path('compare') }}">
         <div id="firstDinoSelect">
             <p>Wybierz dinozaura nr 1</p>
-            <select name="dinosaur">
-                {% if dino1 is not null %}
-                    <option value="{{ dino1.id }}">
-                        {{ dino1.name }}
+            <select name="firstDinosaur">
+                {% if firstDino is not null %}
+                    <option value="{{ firstDino.id }}">
+                        {{ firstDino.name }}
                     </option>
                 {% else %}
                     {% for dino in dinos %}
@@ -24,18 +24,18 @@
                 {% endif %}
             </select>
             <a href="{{ path('graphic', {'id':1}) }}">Szukaj dinozaura...</a>
-            {% if dino1.webPath is defined %}
+            {% if firstDino.webPath is defined %}
                 <div>
-                    <img src="{{ dino1.webPath }}" width="240" height="160">
+                    <img src="{{ firstDino.webPath }}" width="240" height="160">
                 </div>
             {% endif %}
         </div>
         <div id="seconDinoSelect">
             <p>Wybierz dinozaura nr 2</p>
-            <select name="dinosaur1">
-                {% if dino2 is not null %}
-                    <option value="{{ dino2.id }}">
-                        {{ dino2.name }}
+            <select name="secondDinosaur">
+                {% if secondDino is not null %}
+                    <option value="{{ secondDino.id }}">
+                        {{ secondDino.name }}
                     </option>
                 {% else %}
                     {% for dino in dinos %}
@@ -46,9 +46,9 @@
                 {% endif %}
             </select>
             <a href="{{ path('graphic', {'id':2}) }}">Szukaj dinozaura...</a>
-            {% if dino2.webPath is defined %}
+            {% if secondDino.webPath is defined %}
                 <div>
-                    <img src="{{ dino2.webPath }}" width="240" height="160">
+                    <img src="{{ secondDino.webPath }}" width="240" height="160">
                 </div>
             {% endif %}
         </div>
