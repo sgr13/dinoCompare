@@ -126,16 +126,8 @@ class DinoDataController extends Controller
 
         if (isset($text)) {
 
-//            $em = $this->getDoctrine()->getManager();
-//            $dinos = $em->getRepository('DinoCompareBundle:DinoData')->findDinoByName($text);
-
             $em = $this->getDoctrine()->getManager();
-            $repository = $em->getRepository('DinoCompareBundle:DinoData');
-            $query = $repository->createQueryBuilder('p')
-                ->where('p.name Like :word')
-                ->setParameter('word', '%' . $text . '%')
-                ->getQuery();
-            $dinos = $query->getResult();
+            $dinos = $em->getRepository('DinoCompareBundle:DinoData')->findDinoByName($text);
 
             return $this->render('DinoCompareBundle:DinoData:showAll.html.twig', array('dinos' => $dinos));
         }
