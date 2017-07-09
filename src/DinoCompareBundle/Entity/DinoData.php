@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="dino_data")
  * @ORM\Entity(repositoryClass="DinoCompareBundle\Repository\DinoDataRepository")
- * @ORM\Entity(repositoryClass="DinoCompareBundle\Entity\DinoDataRepository")
  */
 class DinoData
 {

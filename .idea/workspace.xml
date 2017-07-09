@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9875caf5-2a17-467e-9aa8-238714db8585" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DinoCompareBundle/Controller/DinoDataController.php" afterPath="$PROJECT_DIR$/src/DinoCompareBundle/Controller/DinoDataController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoDataRepository.php" afterPath="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoDataRepository.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoDataRepository.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoData.php" afterPath="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DinoCompareBundle/Repository/DinoDataRepository.php" afterPath="$PROJECT_DIR$/src/DinoCompareBundle/Repository/DinoDataRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DinoCompare.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +34,8 @@
       <file leaf-file-name="DinoDataController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DinoCompareBundle/Controller/DinoDataController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-86.666664" vertical-offset="0" max-vertical-offset="5346">
-              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.9482758" vertical-offset="2151" max-vertical-offset="5346">
+              <caret line="129" column="76" selection-start-line="129" selection-start-column="71" selection-end-line="129" selection-end-column="76" />
               <folding>
                 <element signature="e#48#86#0#PHP" expanded="true" />
               </folding>
@@ -40,14 +43,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DinoDataRepository.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoDataRepository.php">
+      <file leaf-file-name="DinoDataRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DinoCompareBundle/Repository/DinoDataRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37802908" vertical-offset="0" max-vertical-offset="619">
-              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+            <state vertical-scroll-proportion="-13.333333" vertical-offset="0" max-vertical-offset="540">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
-                <marker date="1499413063412" expanded="true" signature="248:314" placeholder="SELECT p fro..DinoCompareBundle..." />
+                <marker date="1499629915554" expanded="true" signature="384:450" placeholder="SELECT p fro..DinoCompareBundle..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DinoData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="5472">
+              <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4057971" vertical-offset="0" max-vertical-offset="621">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,9 +113,11 @@
         <option value="$PROJECT_DIR$/src/DinoCompareBundle/Resources/views/DinoData/selectSuborder.html.twig" />
         <option value="$PROJECT_DIR$/src/DinoCompareBundle/Resources/views/DinoData/selectDino.html.twig" />
         <option value="$PROJECT_DIR$/src/DinoCompareBundle/Resources/views/DinoData/compareForm.html.twig" />
-        <option value="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoData.php" />
-        <option value="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoDataRepository.php" />
         <option value="$PROJECT_DIR$/src/DinoCompareBundle/Controller/DinoDataController.php" />
+        <option value="$PROJECT_DIR$/src/DinoCompareBundle/Repository/DinoDataRepository.php" />
+        <option value="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoDataRepository.php" />
+        <option value="$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoData.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -129,6 +154,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -225,7 +251,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -663,14 +688,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2107" max-vertical-offset="3168">
           <caret line="164" column="80" selection-start-line="164" selection-start-column="80" selection-end-line="164" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DinoCompareBundle/Controller/DinoDataController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-86.666664" vertical-offset="0" max-vertical-offset="5346">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.9482758" vertical-offset="2151" max-vertical-offset="5346">
+          <caret line="129" column="76" selection-start-line="129" selection-start-column="71" selection-end-line="129" selection-end-column="76" />
           <folding>
             <element signature="e#48#86#0#PHP" expanded="true" />
           </folding>
@@ -679,27 +703,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DinoCompareBundle/Repository/DinoDataRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="619">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-13.333333" vertical-offset="0" max-vertical-offset="540">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1499629915554" expanded="true" signature="384:450" placeholder="SELECT p fro..DinoCompareBundle..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="5490">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="5472">
+          <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DinoCompareBundle/Entity/DinoDataRepository.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37802908" vertical-offset="0" max-vertical-offset="619">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding>
-            <marker date="1499413063412" expanded="true" signature="248:314" placeholder="SELECT p fro..DinoCompareBundle..." />
-          </folding>
+        <state vertical-scroll-proportion="0.4057971" vertical-offset="0" max-vertical-offset="621">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
