@@ -67,6 +67,8 @@ th, td {
     background-color: lightgreen;
 }
 
+/*wybor podrządu - dino selection*/
+
 #dinoSel {
     margin-left: 25%;
     margin-right: 25%;
@@ -80,10 +82,11 @@ th, td {
 
 #dinoSel td:hover {
     cursor: pointer;
+
 }
 
 #dinoSel td img:hover {
-
+    border: 2px red solid;
 }
 
 #dinoSel td {
@@ -91,10 +94,13 @@ th, td {
 }
 
 #dinoSelName {
-    font-size: 120%;
+    font-size: 150%;
     text-align: center;
     display: block;
 }
+
+/*------*/
+
 
 .mainContainer {
 

@@ -14,7 +14,7 @@ $(document).ready(function () {
         $("#weight").children().next().next().addClass('winner');
     }
 
-    //////////////////////////////////////////////////
+//--------------------------
 
     $first = ($("#lenght").children().children().html());
     $second = ($("#lenght").children().next().next().children().html());
@@ -32,7 +32,8 @@ $(document).ready(function () {
     }
 
 
-    ///////////////////////////////////
+//-------------------------
+
     $first = ($("#height").children().children().html());
     $second = ($("#height").children().next().next().children().html());
 
@@ -47,5 +48,15 @@ $(document).ready(function () {
         $("#height").children().addClass('winner');
         $("#height").children().next().next().addClass('winner');
     }
+
+    //-----------------------
+
+    $('.imgSelectedDino').mouseover(function () {
+        console.log("Działa");
+        var path = $(this).attr('src');
+        console.log(path);
+        console.log($('#bgPicture'));
+        $('#bigPictureSelected').attr({src: path});
+    });
 
 })

@@ -8,23 +8,22 @@
     <div id="topPanel">
         <a href="{{ asset("selectDino") }}">Nowe porównanie</a>
     </div>
-    <h1>Welcome to the DinoData:selectDino</h1>
-    {% set i = 0 %}
-    <table id="dinoSel">
-        {% for dino in dinos %}
-            {% if i == 0 or i == 3 %}
-                <tr>
-            {% endif %}
-            <td>
-                <a href="{{ path('idSaveToSession', {'id': dino.id, 'selection': selection}) }}"><img
-                            src='{{ asset( dino.getWebPath ) }}' width="100" height="80"></a><br>
-                {{ dino.name }}
-            </td>
-            {% if i  == 2 or i == 5 %}
-                </tr>
-            {% endif %}
-            {% set i = i + 1 %}
-        {% endfor %}
-    </table>
+    <h3>Wybierz gatunek dinozaura</h3>
+        <div id="bigPicture" style="float: left; margin-left: 35%">
+            <img id='bigPictureSelected' src='http://eloblog.pl/wp-content/uploads/2015/10/Monkey-selfie.jpg' width="300" height="240">
+        </div>
+        <div id="smallPicture" style="float: left">
+            {% for dino in dinos %}
+                <div style="float:left; padding: 2px">
+                    <a href="{{ path('idSaveToSession', {'id': dino.id, 'selection': selection}) }}">
+                        <img src='{{ asset( dino.getWebPath ) }}' width="120" height="96" class="imgSelectedDino">
+                    </a>
+                    <br>
+                    {{ dino.name }}
+                </div>
+
+            {% endfor %}
+        </div>
+
 {% endblock %}
 
