@@ -145,6 +145,21 @@ form {
     border: solid 3px red;
 }
 
+
+
+/*strona wyboru dinozaurow - selectDino.html.twig*/
+
+#secondDinoSelect {
+    float: left;
+}
+
+#selectContainer h2 {
+    font-size: 40px;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+
 #firstDinoSelect {
     float: left;
     border-right: solid 1px black;
@@ -152,6 +167,18 @@ form {
     padding-right: 40px;
 }
 
-#secondDinoSelect {
-    float: left;
+#firstDinoSelect p {
+    font-size: 20px;
+    text-align: center;
 }
+
+#seconDinoSelect p {
+    font-size: 20px;
+    text-align: center;
+}
+
+.selectedDinoPhoto {
+    padding-top: 30px;
+}
+
+

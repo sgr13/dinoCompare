@@ -5,54 +5,55 @@
 {% block body %}
     {% block topPanel %}
     {% endblock %}
-    <h1>Nowe porównanie</h1>
-    <h2>Wybierz dinozaury z listy</h2>
-    <form method="post" action="{{ path('compare') }}">
-        <div id="firstDinoSelect">
-            <p>Wybierz dinozaura nr 1</p>
-            <select name="firstDinosaur">
-                {% if firstDino is not null %}
-                    <option value="{{ firstDino.id }}">
-                        {{ firstDino.name }}
-                    </option>
-                {% else %}
-                    {% for dino in dinos %}
-                        <option value="{{ dino.id }}">
-                            {{ dino.name }}
+    <div id="selectContainer">
+        <h2>Wybierz dinozaury z listy</h2>
+        <form method="post" action="{{ path('compare') }}">
+            <div id="firstDinoSelect">
+                <p>Wybierz dinozaura nr 1</p>
+                <select name="firstDinosaur">
+                    {% if firstDino is not null %}
+                        <option value="{{ firstDino.id }}">
+                            {{ firstDino.name }}
                         </option>
-                    {% endfor %}
+                    {% else %}
+                        {% for dino in dinos %}
+                            <option value="{{ dino.id }}">
+                                {{ dino.name }}
+                            </option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+                <a href="{{ path('graphic', {'id':1}) }}">Szukaj dinozaura...</a>
+                {% if firstDino.webPath is defined %}
+                    <div class="selectedDinoPhoto">
+                        <img src="{{ firstDino.webPath }}" width="240" height="160">
+                    </div>
                 {% endif %}
-            </select>
-            <a href="{{ path('graphic', {'id':1}) }}">Szukaj dinozaura...</a>
-            {% if firstDino.webPath is defined %}
-                <div>
-                    <img src="{{ firstDino.webPath }}" width="240" height="160">
-                </div>
-            {% endif %}
-        </div>
-        <div id="seconDinoSelect">
-            <p>Wybierz dinozaura nr 2</p>
-            <select name="secondDinosaur">
-                {% if secondDino is not null %}
-                    <option value="{{ secondDino.id }}">
-                        {{ secondDino.name }}
-                    </option>
-                {% else %}
-                    {% for dino in dinos %}
-                        <option value="{{ dino.id }}">
-                            {{ dino.name }}
+            </div>
+            <div id="seconDinoSelect">
+                <p>Wybierz dinozaura nr 2</p>
+                <select name="secondDinosaur">
+                    {% if secondDino is not null %}
+                        <option value="{{ secondDino.id }}">
+                            {{ secondDino.name }}
                         </option>
-                    {% endfor %}
+                    {% else %}
+                        {% for dino in dinos %}
+                            <option value="{{ dino.id }}">
+                                {{ dino.name }}
+                            </option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+                <a href="{{ path('graphic', {'id':2}) }}">Szukaj dinozaura...</a>
+                {% if secondDino.webPath is defined %}
+                    <div class="selectedDinoPhoto">
+                        <img src="{{ secondDino.webPath }}" width="240" height="160">
+                    </div>
                 {% endif %}
-            </select>
-            <a href="{{ path('graphic', {'id':2}) }}">Szukaj dinozaura...</a>
-            {% if secondDino.webPath is defined %}
-                <div>
-                    <img src="{{ secondDino.webPath }}" width="240" height="160">
-                </div>
-            {% endif %}
-        </div>
-        <hr>
-        <p><input type="submit" value="Porównaj"></p>
-    </form>
+            </div>
+            <hr>
+            <p><input type="submit" value="Porównaj"></p>
+        </form>
+    </div>
 {% endblock %}
