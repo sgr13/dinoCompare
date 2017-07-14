@@ -10,18 +10,16 @@
     </div>
     <div class="col-md-12"><h1 style="text-align: center; font-size: 300%">Porównywarka Dinozaurów</h1></div>
     <table id="dinoTable" class="col-md-12">
-        <th>{{ firstDino.name }}</th>
-        <th>Kategoria:</th>
-        <th>{{ secondDino.name }}</th>
+        <th style="font-size: 280%">{{ firstDino.name }}</th>
+        <th style="font-size: 280%">{{ secondDino.name }}</th>
         <tr>
-            <td class="dinoPhoto"><img src="{{ firstDino.webPath }}" width="320" height="200" class="wrapper"></td>
-            <td></td>
-
-            <td class="dinoPhoto"><img src="{{ secondDino.webPath }}" width="320" height="200" class="wrapper"></td>
+            <td class="dinoPhoto"><img src="{{ firstDino.webPath }}" width="420" height="280" class="wrapper"></td>
+            <td class="dinoPhoto"><img src="{{ secondDino.webPath }}" width="420" height="280" class="wrapper"></td>
         </tr>
+    </table>
 
         {#---------------------------------------------------------------------------------------------------#}
-
+    <table id="dinoTable" class="col-md-12">
         <tr id="weight">
             <td class="firstDinoRow">
                 {% if firstDino.weight+secondDino.weight < 1000 %}
@@ -44,9 +42,8 @@
             {% set graphicPresentation = (secondDino.weight * 100) / mediana %}
             <td>
                 <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.weight }} kg.</div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                         aria-valuemin="0" aria-valuemax="100" style="width:{{ graphicPresentation }}%">
+                <div class="progres">
+                    <div class="progres-bar" style="width:{{ graphicPresentation }}%">
                         <span class="sr-only">70% Complete</span>
                     </div>
                 </div>
@@ -166,5 +163,4 @@
             </td>
         </tr>
     </table>
-
 {% endblock %}

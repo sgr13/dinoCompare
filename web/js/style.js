@@ -1,4 +1,9 @@
 $(document).ready(function () {
+
+//--------------------------
+    $('#weight .progres-bar').css('width', '0%')
+    $('#weight .progres-bar').animate({width: 88 + '%'}, 2000);
+
     $first = ($("#weight").children().children().html());
     $second = ($("#weight").children().next().next().children().html());
 
@@ -6,12 +11,13 @@ $(document).ready(function () {
     $second = parseFloat($second);
 
     if ($first > $second) {
-        $("#weight").children().first().addClass('winner');
+        $('#weight .progress180').css("background-color", "yellowgreen");
     } else if ($first < $second) {
-        $("#weight").children().next().next().addClass('winner');
+        $('#weight .progres-bar').css("background-color", "yellowgreen");
+
     } else {
-        $("#weight").children().addClass('winner');
-        $("#weight").children().next().next().addClass('winner');
+        $('#weight .progress180').css("background-color", "yellowgreen");
+        $('#weight .progress-bar').css("background-color", "yellowgreen");
     }
 
 //--------------------------
