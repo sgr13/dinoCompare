@@ -130,7 +130,6 @@ form {
 .progres-bar {
     height: 100%;
     background-color: #337ab7;
-
 }
 
 .progress180 {
@@ -140,15 +139,8 @@ form {
 }
 
 .progress-bar180 {
-    float: left;
-    width: 0;
     height: 100%;
-    font-size: 12px;
-    line-height: 20px;
-    color: #337ab7;
-    text-align: center;
     background-color: #fff;
-    border-radius: -4px;
 }
 
 .wrapper {
