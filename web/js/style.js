@@ -1,7 +1,12 @@
 $(document).ready(function () {
 
-
-
+    $('.imgSelectedDino').mouseover(function () {
+        console.log("Działa");
+        var path = $(this).attr('src');
+        console.log(path);
+        console.log($('#bgPicture'));
+        $('#bigPictureSelected').attr({src: path});
+    });
 
     $('#weight .progres-bar').css('width', '0%');
     $('#weight .progress-bar180').css('width', '100%');
@@ -26,14 +31,18 @@ $(document).ready(function () {
                 if ($first > $second) {
                     $('#weight .progress180').css("background-color", "yellowgreen");
                     $('#weight .progres-bar').css("background-color", "red");
+                    $('#weight .leftCup').attr('src', 'photo/cup.png');
 
                 } else if ($first < $second) {
                     $('#weight .progres-bar').css("background-color", "yellowgreen");
                     $('#weight .progress180').css("background-color", "red");
+                    $('#weight .rightCup').attr('src', 'photo/cup.png');
 
                 } else {
                     $('#weight .progress180').css("background-color", "yellowgreen");
                     $('#weight .progres-bar').css("background-color", "yellowgreen");
+                    $('#weight .leftCup').attr('src', 'photo/cup.png');
+                    $('#weight .rightCup').attr('src', 'photo/cup.png');
                 }
             });
         }
@@ -52,14 +61,18 @@ $(document).ready(function () {
                 if ($first > $second) {
                     $('#lenght .progress180').css("background-color", "yellowgreen");
                     $('#lenght .progres-bar').css("background-color", "red");
+                    $('#lenght .leftCup').attr('src', 'photo/cup.png');
 
                 } else if ($first < $second) {
                     $('#lenght .progres-bar').css("background-color", "yellowgreen");
                     $('#lenght .progress180').css("background-color", "red");
+                    $('#lenght .rightCup').attr('src', 'photo/cup.png');
 
                 } else {
                     $('#lenght .progress180').css("background-color", "yellowgreen");
                     $('#lenght .progres-bar').css("background-color", "yellowgreen");
+                    $('#lenght .leftCup').attr('src', 'photo/cup.png');
+                    $('#lenght .rightCup').attr('src', 'photo/cup.png');
                 }
             });
         }
@@ -79,14 +92,18 @@ $(document).ready(function () {
                 if ($first > $second) {
                     $('#height .progress180').css("background-color", "yellowgreen");
                     $('#height .progres-bar').css("background-color", "red");
+                    $('#height .leftCup').attr('src', 'photo/cup.png');
 
                 } else if ($first < $second) {
                     $('#height .progres-bar').css("background-color", "yellowgreen");
                     $('#height .progress180').css("background-color", "red");
+                    $('#height .rightCup').attr('src', 'photo/cup.png');
 
                 } else {
                     $('#height .progress180').css("background-color", "yellowgreen");
                     $('#height .progres-bar').css("background-color", "yellowgreen");
+                    $('#height .leftCup').attr('src', 'photo/cup.png');
+                    $('#height .rightCup').attr('src', 'photo/cup.png');
                 }
             });
         }

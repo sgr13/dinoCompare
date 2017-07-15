@@ -13,13 +13,13 @@
         <th style="font-size: 280%">{{ firstDino.name }}</th>
         <th style="font-size: 280%">{{ secondDino.name }}</th>
         <tr>
-            <td class="dinoPhoto"><img src="{{ firstDino.webPath }}" width="420" height="280" class="wrapper"></td>
-            <td class="dinoPhoto"><img src="{{ secondDino.webPath }}" width="420" height="280" class="wrapper"></td>
+            <td class="dinoPhoto"><img src="{{ firstDino.webPath }}" width="460" height="310" class="wrapper"></td>
+            <td class="dinoPhoto"><img src="{{ secondDino.webPath }}" width="460" height="310" class="wrapper"></td>
         </tr>
     </table>
     {#{{ graphicPresentation }}#}
         {#---------------------------------------------------------------------------------------------------#}
-    <table id="dinoTable" class="col-md-12">
+    <table id="dinoTable" class="col-md-12" style="border-spacing: 22px;">
         <tr id="weight">
             <td class="firstDinoRow">
                 {% if firstDino.weight+secondDino.weight < 1000 %}
@@ -37,16 +37,10 @@
                     {{ parent() }}
                 {% endblock %}
             </td>
-            <td style="font-size: 150%">
-                <div>
-
-                </div>
-                <div>
-                    WAGA
-                </div>
-                <div>
-                    <img src="{{  }}">
-                </div>
+            <td style="font-size: 100%">
+                <img src="" width="40" style="position: relative; right: 60px " class="leftCup">
+                <span style="position: relative; left: 0px;">Waga</span>
+                <img src="" width="40" style="position: relative; left: 60px" class="rightCup">
             </td>
             {% set graphicPresentation = (secondDino.weight * 100) / mediana %}
             <td>
@@ -79,7 +73,11 @@
                     {{ parent() }}
                 {% endblock %}
             </td>
-            <td>Długość</td>
+            <td style="font-size: 100%">
+                <img src="" width="40" style="position: relative; right: 60px " class="leftCup">
+                <span style="position: relative; left: 0px;">Dlugosc</span>
+                <img src="" width="40" style="position: relative; left: 60px" class="rightCup">
+            </td>
             {% set graphicPresentation = (secondDino.lenght * 100) / mediana %}
             <td>
                 <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.lenght }} m.</div>
@@ -110,7 +108,11 @@
                     {{ parent() }}
                 {% endblock %}
             </td>
-            <td>Wysokość</td>
+            <td style="font-size: 100%">
+                <img src="" width="40" style="position: relative; right: 60px " class="leftCup">
+                <span style="position: relative; left: 0px;">Wysokosc</span>
+                <img src="" width="40" style="position: relative; left: 60px" class="rightCup">
+            </td>
             {% set graphicPresentation = (secondDino.height * 100) / mediana %}
             <td>
                 <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.height }} m.</div>
