@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
-//--------------------------
+
+
+
     $('#weight .progres-bar').css('width', '0%');
     $('#weight .progress-bar180').css('width', '100%');
     $('#lenght .progres-bar').css('width', '0%');
@@ -90,14 +92,4 @@ $(document).ready(function () {
         }
 
     }).scroll();
-
-
-    $('.imgSelectedDino').mouseover(function () {
-        console.log("Działa");
-        var path = $(this).attr('src');
-        console.log(path);
-        console.log($('#bgPicture'));
-        $('#bigPictureSelected').attr({src: path});
-    });
-
-})
+});

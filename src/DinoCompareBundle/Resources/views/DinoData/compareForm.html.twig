@@ -37,7 +37,17 @@
                     {{ parent() }}
                 {% endblock %}
             </td>
-            <td style="font-size: 150%">Waga</td>
+            <td style="font-size: 150%">
+                <div>
+
+                </div>
+                <div>
+                    WAGA
+                </div>
+                <div>
+                    <img src="{{  }}">
+                </div>
+            </td>
             {% set graphicPresentation = (secondDino.weight * 100) / mediana %}
             <td>
                 <div style="padding-bottom: 10px; font-size: 25px">{{ secondDino.weight }} kg.</div>
