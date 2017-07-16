@@ -8,10 +8,10 @@
     <div id="topPanel">
         <a href="{{ asset("selectDino") }}">Nowe porównanie</a>
     </div>
-    <div class="col-md-12"><h1 style="text-align: center; font-size: 300%">Porównywarka Dinozaurów</h1></div>
-    <table id="dinoTable" class="col-md-12">
-        <th style="font-size: 280%">{{ firstDino.name }}</th>
-        <th style="font-size: 280%">{{ secondDino.name }}</th>
+    <div class="col-md-12"><h1 id="title">Porównywarka Dinozaurów</h1></div>
+    <table class="dinoTable" class="col-md-12" id="photoCompare">
+        <th>{{ firstDino.name }}</th>
+        <th>{{ secondDino.name }}</th>
         <tr>
             <td class="dinoPhoto"><img src="{{ firstDino.webPath }}" width="460" height="310" class="wrapper"></td>
             <td class="dinoPhoto"><img src="{{ secondDino.webPath }}" width="460" height="310" class="wrapper"></td>
@@ -19,7 +19,7 @@
     </table>
     {#{{ graphicPresentation }}#}
         {#---------------------------------------------------------------------------------------------------#}
-    <table id="dinoTable" class="col-md-12" style="border-spacing: 22px;">
+    <table class="dinoTable" class="col-md-12" style="border-spacing: 22px;">
         <tr id="weight">
             <td class="firstDinoRow">
                 {% if firstDino.weight+secondDino.weight < 1000 %}

@@ -32,17 +32,17 @@ th, td {
     text-align: center;
 }
 
-#dinoTable {
+.dinoTable {
     width: 100%;
     border-spacing: 50px;
     border-collapse: separate;
 }
 
-#dinoTable, #dinoTable th, #dinoTable td {
+.dinoTable, .dinoTable th, .dinoTable td {
     border: none;
 }
 
-#dinoTable th {
+.dinoTable th {
     text-align: center;
     font-size: 200%;
 }
@@ -55,11 +55,11 @@ th, td {
     text-align: right;
 }
 
-#dinoTable tr:first-child {
+.dinoTable tr:first-child {
     text-align: center;
 }
 
-#dinoTable tr td:nth-child(2) {
+.dinoTable tr td:nth-child(2) {
     text-align: center;
 }
 
@@ -147,8 +147,6 @@ form {
     border: solid 3px red;
 }
 
-
-
 /*strona wyboru dinozaurow - selectDino.html.twig*/
 
 #secondDinoSelect {
@@ -181,6 +179,28 @@ form {
 
 .selectedDinoPhoto {
     padding-top: 30px;
+}
+
+#bigPicture {
+    float: left;
+    margin-left: 35%;
+}
+
+#smallPicture {
+    float: left;
+}
+#smallPicture div {
+    float: left;
+    padding: 2px;
+}
+
+#title {
+    text-align: center;
+    font-size: 300%;
+}
+
+#photoCompare th {
+    font-size: 300%;
 }
 
 

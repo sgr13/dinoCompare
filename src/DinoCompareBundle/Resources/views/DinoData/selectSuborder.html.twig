@@ -9,12 +9,12 @@
         <a href="{{ asset("selectDino") }}">Nowe porównanie</a>
     </div>
     <h3>Wybierz gatunek dinozaura</h3>
-        <div id="bigPicture" style="float: left; margin-left: 35%">
+        <div id="bigPicture">
             <img id='bigPictureSelected' src="https://lh3.googleusercontent.com/-ng_aVsi27ow/Un1t3NI8yzI/AAAAAAAAGbY/BstGxOTaMyM/w300-h318-n/cartoon%2Bdinosaur%2Bvector%2Bfree5.png" width="300" height="240">
         </div>
-        <div id="smallPicture" style="float: left">
+        <div id="smallPicture">
             {% for dino in dinos %}
-                <div style="float:left; padding: 2px">
+                <div>
                     <a href="{{ path('idSaveToSession', {'id': dino.id, 'selection': selection}) }}">
                         <img src='{{ asset( dino.getWebPath ) }}' width="120" height="96" class="imgSelectedDino">
                     </a>
