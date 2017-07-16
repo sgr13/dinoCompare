@@ -203,4 +203,24 @@ form {
     font-size: 300%;
 }
 
+.dinoProperty {
+    padding-bottom: 10px;
+    font-size: 25px;
+}
+
+.leftCup {
+    position: relative;
+    right: 60px;
+}
+
+.rightCup {
+    position: relative;
+    left: 60px;
+}
+
+.compareType {
+    position: relative;
+    left: 0px;
+}
+
 
