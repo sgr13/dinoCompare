@@ -223,4 +223,28 @@ form {
     left: 0px;
 }
 
+img.zoom {
+    width: 490px;
+    height: 280px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+}
 
+.transition {
+    -webkit-transform: scale(1.8);
+    -moz-transform: scale(1.8);
+    -o-transform: scale(1.8);
+    transform: scale(1.8);
+}
+
+.mainPageTitle {
+    text-align: center;
+}
+
+#mainPagePhotoContainer {
+    width: 900px;
+    text-align: center;
+    margin-left: 12%;
+}

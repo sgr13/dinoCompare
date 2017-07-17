@@ -8,6 +8,17 @@ $(document).ready(function () {
         $('#bigPictureSelected').attr({src: path});
     });
 
+    //---------------
+
+
+    $('.zoom').hover(function() {
+        $(this).addClass('transition');
+    }, function() {
+        $(this).removeClass('transition');
+    });
+
+    //-----------------
+
     $('#weight .progres-bar').css('width', '0%');
     $('#weight .progress-bar180').css('width', '100%');
     $('#lenght .progres-bar').css('width', '0%');
@@ -109,4 +120,9 @@ $(document).ready(function () {
         }
 
     }).scroll();
+
+    //-------------------
+
+
+
 });
